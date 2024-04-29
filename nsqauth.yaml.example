@@ -1,0 +1,34 @@
+---
+# IP address and port for the HTTP server binding (optional, default: 0.0.0.0:4181)
+bind_addr: 0.0.0.0
+bind_port: 4181
+
+# Identities list
+identities:
+  - identity: admin # identity name
+    secret: twlEgK525guP7ByWiSZPMkok2OHTEJLN # identity secret key
+    authorizations: # access lists
+      - topic: ^test$
+        channels:
+          - .*
+        permissions:
+          - publish
+          - subscribe
+
+  - identity: user
+    secret: twlEgK525guP7ByWiSZPMkok2OHTEJLN
+    authorizations:
+      - topic: ^test$
+        channels:
+          - .*
+        permissions:
+          - subscribe
+
+  - identity: user2
+    secret: twlEgK525guP7ByWiSZPMkok2OHTEJLN
+    authorizations:
+      - topic: ^test2$
+        channels:
+          - .*
+        permissions:
+          - subscribe
